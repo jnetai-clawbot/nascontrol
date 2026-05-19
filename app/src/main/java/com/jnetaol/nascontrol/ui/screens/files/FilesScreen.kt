@@ -1,6 +1,7 @@
 package com.jnetaol.nascontrol.ui.screens.files
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,7 +19,6 @@ import com.jnetaol.nascontrol.ui.components.*
 import com.jnetaol.nascontrol.ui.screens.AppViewModel
 import com.jnetaol.nascontrol.ui.theme.*
 
-@OptIn(ExperimentalMaterial3Api::class)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FilesScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
@@ -38,13 +38,13 @@ fun FilesScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
         LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             if (currentPath != "/") {
                 item {
-                    Surface(Modifier.fillMaxWidth(), onClick = { currentPath = currentPath.substringBeforeLast("/", "/") }, shape = RoundedCornerShape(8.dp), color = SurfaceVariant) {
+                    Card(Modifier.fillMaxWidth().clickable { currentPath = currentPath.substringBeforeLast("/", "/") }, shape = RoundedCornerShape(8.dp), colors = CardDefaults.cardColors(containerColor = SurfaceVariant)) {
                         Row(Modifier.padding(12.dp)) { Icon(Icons.Default.ArrowUpward, null, tint = NeonCyan); Spacer(Modifier.width(12.dp)); Text("..", color = OnSurface) }
                     }
                 }
             }
             items(fileList) { file ->
-                Surface(Modifier.fillMaxWidth(), onClick = { if (file.isDirectory) currentPath = file.path }, shape = RoundedCornerShape(8.dp), color = Surface) {
+                Card(Modifier.fillMaxWidth().clickable { if (file.isDirectory) currentPath = file.path }, shape = RoundedCornerShape(8.dp), colors = CardDefaults.cardColors(containerColor = Surface)) {
                     Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
                         Icon(if (file.isDirectory) Icons.Default.Folder else Icons.Default.InsertDriveFile, null, tint = if (file.isDirectory) NeonTeal else OnSurface)
                         Spacer(Modifier.width(12.dp))

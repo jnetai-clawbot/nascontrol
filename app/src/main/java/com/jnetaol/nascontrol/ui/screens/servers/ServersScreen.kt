@@ -46,7 +46,7 @@ fun ServersScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
             OutlinedTextField(host, { host = it }, label = { Text("Host/IP") }, colors = OutlinedTextFieldDefaults.colors(focusedTextColor = OnBackground, unfocusedTextColor = OnBackground)); Spacer(Modifier.height(8.dp))
             OutlinedTextField(port, { port = it }, label = { Text("Port") }, colors = OutlinedTextFieldDefaults.colors(focusedTextColor = OnBackground, unfocusedTextColor = OnBackground)); Spacer(Modifier.height(8.dp))
             OutlinedTextField(username, { username = it }, label = { Text("Username") }, colors = OutlinedTextFieldDefaults.colors(focusedTextColor = OnBackground, unfocusedTextColor = OnBackground)); Spacer(Modifier.height(8.dp))
-            OutlinedTextField(password, { password = it }, label = { Text("Password") }, visualTransformation = PasswordVisualTransformation(), colors = OutlinedTextFieldDefaults.colors(focusedTextColor = OnBackground, unfocusedTextColor = OnBackground))
+            OutlinedTextField(password, { password = it }, label = { Text("Password") }, visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(), colors = OutlinedTextFieldDefaults.colors(focusedTextColor = OnBackground, unfocusedTextColor = OnBackground))
         }
     }, confirmButton = { TextButton({ viewModel.addServer(name, host, port.toIntOrNull() ?: 22, username, password, "SSH"); showAddDialog = false }) { Text("Add", color = NeonTeal) } }, dismissButton = { TextButton({ showAddDialog = false }) { Text("Cancel", color = OnSurface) } }, containerColor = Surface)
 }

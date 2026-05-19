@@ -37,15 +37,15 @@ fun SettingsScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
             SectionHeader("About")
             NeonCard {
                 SettingsRow(Icons.Default.Info, "NASControl v1.0.0", "NAS Server Manager") {}
-                HorizontalDivider(color = DividerDark)
+                Divider(color = DividerDark)
                 SettingsRow(Icons.Default.Language, "Made By jnetaol.com", "Visit our website") {
                     try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://jnetaol.com"))) } catch (_: Exception) {}
                 }
-                HorizontalDivider(color = DividerDark)
+                Divider(color = DividerDark)
                 SettingsRow(Icons.Default.SystemUpdateAlt, "Check For Updates", "See latest on GitHub") {
                     try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jnetaol/nascontrol/releases"))) } catch (_: Exception) {}
                 }
-                HorizontalDivider(color = DividerDark)
+                Divider(color = DividerDark)
                 SettingsRow(Icons.Default.Share, "Share App", "Share latest release") {
                     val intent = Intent(Intent.ACTION_SEND).apply { putExtra(Intent.EXTRA_TEXT, "Check out NASControl: https://github.com/jnetaol/nascontrol/releases"); type = "text/plain" }
                     context.startActivity(Intent.createChooser(intent, "Share"))
