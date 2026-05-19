@@ -27,10 +27,10 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("nascontrol.keystore")
-            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "nascontrol123"
-            keyAlias = "nascontrol"
-            keyPassword = System.getenv("KEY_PASSWORD") ?: "nascontrol123"
+            storeFile = rootProject.file("keystore.jks")
+            storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "changeit"
+            keyAlias = System.getenv("KEY_ALIAS") ?: "nascontrol"
+            keyPassword = System.getenv("KEY_PASSWORD") ?: "changeit"
         }
     }
 
