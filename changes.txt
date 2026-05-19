@@ -1,0 +1,5 @@
+# App: NASControl v1.0.0
+# Package: com.jnetaol.nascontrol
+# Build: Gradle 8.5, Kotlin 1.9.22, AGP 8.2.2
+# Features: NAS resource monitoring, disk health, Docker management, file explorer, backups
+# See CHANGELOG.md for details
