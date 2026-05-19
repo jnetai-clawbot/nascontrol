@@ -47,11 +47,11 @@ fun BackupCard(task: BackupTask, onRun: () -> Unit, onDelete: () -> Unit) {
             Text("Source: ${task.sourcePath}", color = OnBackground, fontSize = 12.sp)
             Text("Dest: ${task.destPath}", color = OnBackground, fontSize = 12.sp)
             Text("Schedule: ${task.schedule}", color = OnBackground, fontSize = 12.sp)
-            if (task.progress > 0) LinearProgressIndicator(progress = { task.progress / 100f }, modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp))
+            if (task.progress > 0) LinearProgressIndicator(progress = task.progress / 100f, modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp))
             Row(Modifier.fillMaxWidth(), Arrangement.End) {
-                GlowButton("Run", Icons.Default.PlayArrow, glowColor = NeonGreen, onClick = onRun)
+                GlowButton("Run", onClick = onRun, icon = Icons.Default.PlayArrow)
                 Spacer(Modifier.width(8.dp))
-                GlowButton("Delete", Icons.Default.Delete, glowColor = NeonRed, onClick = onDelete)
+                GlowButton("Delete", onClick = onDelete, icon = Icons.Default.Delete)
             }
         }
     }

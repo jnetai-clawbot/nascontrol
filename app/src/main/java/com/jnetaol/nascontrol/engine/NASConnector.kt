@@ -38,7 +38,7 @@ class NASConnector {
         val response = client.newCall(request).execute()
         if (response.isSuccessful) {
             DebugLogger.i("NC-012", "HTTP API connection successful")
-            ConnectionResult(
+            return ConnectionResult(
                 success = true,
                 message = "Connected to ${config.name}",
                 systemStats = simulateSystemStats(),
@@ -46,14 +46,14 @@ class NASConnector {
                 containers = simulateContainers(config.id)
             )
         } else {
-            ConnectionResult(false, "HTTP ${response.code}: ${response.message}")
+            return ConnectionResult(false, "HTTP ${response.code}: ${response.message}")
         }
     }
 
     private suspend fun simulateSshConnect(config: ServerConfig): ConnectionResult {
         DebugLogger.i("NC-013", "SSH simulation connecting to ${config.name}")
         kotlinx.coroutines.delay(1500)
-        ConnectionResult(
+        return ConnectionResult(
             success = true,
             message = "Connected to ${config.name} via SSH",
             systemStats = simulateSystemStats(),

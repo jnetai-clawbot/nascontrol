@@ -30,7 +30,7 @@ fun AppNavHost(navController: NavHostController, viewModel: AppViewModel, modifi
     Box(modifier) {
         NavHost(navController, startDestination = "dashboard") {
             composable("dashboard") { DashboardScreen(viewModel, onNavigateToServers = { navController.navigate("servers") }) }
-            composable("disks") { DisksScreen(viewModel, onNavigateBack = { navController.popBackStack() }) }
+            composable("disks") { DisksScreen(viewModel) }
             composable("docker") { DockerScreen(viewModel, onNavigateBack = { navController.popBackStack() }) }
             composable("files") { FilesScreen(viewModel, onNavigateBack = { navController.popBackStack() }) }
             composable("backups") { BackupsScreen(viewModel, onNavigateBack = { navController.popBackStack() }) }
