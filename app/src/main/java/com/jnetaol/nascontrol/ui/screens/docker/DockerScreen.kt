@@ -31,7 +31,7 @@ fun DockerScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
         Row(Modifier.fillMaxWidth().padding(16.dp).statusBarsPadding(), Arrangement.SpaceBetween, Alignment.CenterVertically) {
             IconButton(onNavigateBack) { Icon(Icons.Default.ArrowBack, null, tint = OnBackground) }
             Text("Docker Containers", color = OnBackground, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            GlowButton("Refresh", icon = Icons.Default.Refresh, glowColor = NeonCyan) { viewModel.refreshDocker() }
+            GlowButton("Refresh", onClick = { viewModel.refreshDocker() }, icon = Icons.Default.Refresh)
         }
         LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(containers) { container ->
@@ -43,7 +43,7 @@ fun DockerScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
 
 @Composable
 fun ContainerCard(container: DockerContainer, onStart: () -> Unit, onStop: () -> Unit, onRestart: () -> Unit) {
-    NeonCard(borderColor = if (container.status.lowercase() == "running") NeonGreen.copy(alpha = 0.5f) else CardBorder.copy(alpha = 0.3f)) {
+    NeonCard {
         Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(12.dp).clip(CircleShape).background(if (container.status.lowercase() == "running") StatusGood else StatusStopped))
             Spacer(Modifier.width(12.dp))

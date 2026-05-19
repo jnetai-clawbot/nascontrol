@@ -34,7 +34,7 @@ fun ServersScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
         Row(Modifier.fillMaxWidth().padding(16.dp).statusBarsPadding(), Arrangement.SpaceBetween, Alignment.CenterVertically) {
             IconButton(onNavigateBack) { Icon(Icons.Default.ArrowBack, null, tint = OnBackground) }
             Text("Servers", color = OnBackground, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            GlowButton("Add", icon = Icons.Default.Add, glowColor = NeonTeal) { showAddDialog = true }
+            GlowButton("Add", onClick = { showAddDialog = true }, icon = Icons.Default.Add)
         }
         LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(servers) { server -> ServerCard(server, onConnect = { viewModel.connectToServer(server) }, onDelete = { viewModel.deleteServer(server) }) }
@@ -56,7 +56,7 @@ fun ServerCard(server: ServerConfig, onConnect: () -> Unit, onDelete: () -> Unit
     NeonCard {
         Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) { Text(server.name, color = OnBackground, fontSize = 16.sp, fontWeight = FontWeight.Bold); Text("${server.host}:${server.port}", color = OnSurface, fontSize = 13.sp); if (server.isConnected) Text("Connected", color = NeonGreen, fontSize = 12.sp) }
-            Column { GlowButton("Connect", Icons.Default.PowerSettingsNew, glowColor = NeonGreen, onClick = onConnect); Spacer(Modifier.height(4.dp)); GlowButton("Delete", Icons.Default.Delete, glowColor = NeonRed, onClick = onDelete) }
+            Column { GlowButton("Connect", onClick = onConnect, icon = Icons.Default.PowerSettingsNew); Spacer(Modifier.height(4.dp)); GlowButton("Delete", onClick = onDelete, icon = Icons.Default.Delete) }
         }
     }
 }
