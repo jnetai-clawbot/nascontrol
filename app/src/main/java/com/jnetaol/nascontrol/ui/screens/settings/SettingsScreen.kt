@@ -36,18 +36,18 @@ fun SettingsScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
         Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 16.dp)) {
             SectionHeader("About")
             NeonCard {
-                SettingsRow(Icons.Default.Info, "NASControl v1.0.0", "NAS Server Manager") {}
+                SettingsRow(Icons.Default.Info, "NASControl v1.0.2", "NAS Server Manager") {}
                 Divider(color = DividerDark)
                 SettingsRow(Icons.Default.Language, "Made By jnetai.com", "Visit our website") {
                     try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://jnetai.com"))) } catch (_: Exception) {}
                 }
                 Divider(color = DividerDark)
                 SettingsRow(Icons.Default.SystemUpdateAlt, "Check For Updates", "See latest on GitHub") {
-                    try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jnetaol/nascontrol/releases"))) } catch (_: Exception) {}
+                        try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jnetai-clawbot/nascontrol/releases"))) } catch (_: Exception) {}
                 }
                 Divider(color = DividerDark)
                 SettingsRow(Icons.Default.Share, "Share App", "Share latest release") {
-                    val intent = Intent(Intent.ACTION_SEND).apply { putExtra(Intent.EXTRA_TEXT, "Check out NASControl: https://github.com/jnetaol/nascontrol/releases"); type = "text/plain" }
+                    val intent = Intent(Intent.ACTION_SEND).apply { putExtra(Intent.EXTRA_TEXT, "Check out NASControl: https://github.com/jnetai-clawbot/nascontrol/releases"); type = "text/plain" }
                     context.startActivity(Intent.createChooser(intent, "Share"))
                 }
             }
