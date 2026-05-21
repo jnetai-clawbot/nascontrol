@@ -21,4 +21,4 @@ Manage your home server / NAS from your Android device.
 MIT License
 
 ## Made By
-[jnetaol.com](https://jnetaol.com)
+[jnetai.com](https://jnetai.com)

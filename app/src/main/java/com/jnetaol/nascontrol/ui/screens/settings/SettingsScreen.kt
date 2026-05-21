@@ -38,8 +38,8 @@ fun SettingsScreen(viewModel: AppViewModel, onNavigateBack: () -> Unit) {
             NeonCard {
                 SettingsRow(Icons.Default.Info, "NASControl v1.0.0", "NAS Server Manager") {}
                 Divider(color = DividerDark)
-                SettingsRow(Icons.Default.Language, "Made By jnetaol.com", "Visit our website") {
-                    try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://jnetaol.com"))) } catch (_: Exception) {}
+                SettingsRow(Icons.Default.Language, "Made By jnetai.com", "Visit our website") {
+                    try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://jnetai.com"))) } catch (_: Exception) {}
                 }
                 Divider(color = DividerDark)
                 SettingsRow(Icons.Default.SystemUpdateAlt, "Check For Updates", "See latest on GitHub") {
